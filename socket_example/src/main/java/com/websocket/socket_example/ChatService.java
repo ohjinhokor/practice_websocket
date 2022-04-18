@@ -3,6 +3,7 @@ package com.websocket.socket_example;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -39,9 +40,11 @@ public class ChatService {
             .name(name)
             .build();
         chatRooms.put(randomId, chatRoom);
+        log.info("randomId : "+ randomId);
         return chatRoom;
     }
 
+    @Cacheable
     public <T> void sendMessage(WebSocketSession session, T message){
         try {
             session.sendMessage(new TextMessage(objectMapper.writeValueAsString(message)));
