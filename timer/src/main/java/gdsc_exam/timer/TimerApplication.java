@@ -1,13 +1,13 @@
-package com.websocket.socket_example;
+package gdsc_exam.timer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SocketExampleApplication {
+public class TimerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SocketExampleApplication.class, args);
+		SpringApplication.run(TimerApplication.class, args);
 	}
 
 }

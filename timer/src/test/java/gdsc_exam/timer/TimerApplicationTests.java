@@ -1,10 +1,10 @@
-package com.websocket.socket_example;
+package gdsc_exam.timer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SocketExampleApplicationTests {
+class TimerApplicationTests {
 
 	@Test
 	void contextLoads() {
