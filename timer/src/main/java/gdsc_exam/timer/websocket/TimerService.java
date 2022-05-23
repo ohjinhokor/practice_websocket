@@ -14,30 +14,29 @@ import java.util.*;
 @Slf4j
 @RequiredArgsConstructor
 @Service
-public class ChatService {
+public class TimerService {
 
     private final ObjectMapper objectMapper;
-    private Map<String, ChatRoom> chatRooms;
+    private Map<Integer, TimerRoom> chatRooms;
 
     @PostConstruct
     private void init() {
         chatRooms = new LinkedHashMap<>();
     }
 
-    public List<ChatRoom> findAllRoom() {
+    public List<TimerRoom> findAllRoom() {
         return new ArrayList<>(chatRooms.values());
     }
 
-    public ChatRoom findRoomById(String roomId) {
+    public TimerRoom findRoomById(int roomId) {
         return chatRooms.get(roomId);
     }
 
-    public ChatRoom createRoom(String userId) {
-        String randomId = UUID.randomUUID().toString();
-        ChatRoom chatRoom = ChatRoom.builder()
+    public TimerRoom createRoom(int userId) {
+        TimerRoom chatRoom = TimerRoom.builder()
             .userId(userId)
             .build();
-        chatRooms.put(randomId, chatRoom);
+        chatRooms.put(userId, chatRoom);
         return chatRoom;
     }
 

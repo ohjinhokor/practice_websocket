@@ -8,20 +8,20 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Getter
-public class ChatRoom {
+public class TimerRoom {
 
     //USER-PK
-    private String userId;
+    private int userId;
     private Set<WebSocketSession> sessions = new HashSet<>();
 
     @Builder
-    public static ChatRoom create(String userId) {
-        ChatRoom timerRoom = new ChatRoom();
+    public static TimerRoom create(int userId) {
+        TimerRoom timerRoom = new TimerRoom();
         timerRoom.userId = userId;
         return timerRoom;
 }
 
-    public void handleActions(WebSocketSession session, ChatMessage chatMessage, ChatService chatService) {
+    public void handleActions(WebSocketSession session, ChatMessage chatMessage, TimerService chatService) {
         if (chatMessage.getType().equals(ChatMessage.MessageType.ENTER)) {
             sessions.add(session);
             chatMessage.setMessage(chatMessage.getSender() + "님이 입장했습니다.");
@@ -29,7 +29,7 @@ public class ChatRoom {
         sendMessage(chatMessage, chatService);
     }
 
-    public <T> void sendMessage(T message, ChatService chatService) {
+    public <T> void sendMessage(T message, TimerService chatService) {
         sessions.parallelStream().forEach(session -> chatService.sendMessage(session, message));
     }
 }
