@@ -11,11 +11,15 @@ import java.util.Set;
 public class TimerRoom {
 
     //USER-PK
-    private int userId;
+    private long userId;
+    private Integer startTime;
+
+    private Integer remainTime; // 스탑워치를 멈췄을 때 남은 시간
+
     private Set<WebSocketSession> sessions = new HashSet<>();
 
     @Builder
-    public static TimerRoom create(int userId) {
+    public static TimerRoom create(long userId) {
         TimerRoom timerRoom = new TimerRoom();
         timerRoom.userId = userId;
         return timerRoom;

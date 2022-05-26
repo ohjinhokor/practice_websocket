@@ -7,7 +7,9 @@ import lombok.Getter;
 public class TimerOperationRequestDto {
     private TimerState timerState;
 
-    private int totalTime;
+    private Integer startTime;
 
-    private int userId;
+    private Integer totalTime;
+
+    private long userId;
 }

@@ -32,11 +32,10 @@ public class TimerService {
         return chatRooms.get(roomId);
     }
 
-    public TimerRoom createRoom(int userId) {
+    public TimerRoom createRoom(long userId) {
         TimerRoom chatRoom = TimerRoom.builder()
             .userId(userId)
             .build();
-        chatRooms.put(userId, chatRoom);
         return chatRoom;
     }
 
